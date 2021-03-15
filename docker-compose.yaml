@@ -1,0 +1,16 @@
+version: "3.3"
+services:
+  db:
+    image: postgres
+    env_file: ./.env
+    ports: 
+      - "5555:5432"
+  web:
+    build: .
+    image: server
+    volumes: 
+      - .:/transcendence_app/
+    depends_on: 
+      - db
+    ports:
+      - "3000:3000"
