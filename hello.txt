@@ -2,9 +2,11 @@
 ruby -v : Версия руби
 curl -L https://get.rvm.io | bash -s stable : Установка менеджера версия для ruby
 rvm list known: Включение менеджера
-rvm install ruby-2.6.3 : Установка ruby
-rvm use ruby-2.6.3 --default : Установка данный интерпретатор как дефолтный
+rvm install ruby-2.4.4 : Установка ruby
+rvm use ruby-2.4.4 --default : Установка данного интерпретатора дефолтным
 
+Установки rails на MacOS:
+gem install rails
 
 
 Краткий экскурс по ruby:
