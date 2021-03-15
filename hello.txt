@@ -1,3 +1,6 @@
+Мой Notion:
+https://www.notion.so/632b6af68a4d435e8c252216913ad93a?v=56b1bf0bfe9843d394b6e8181d89314d
+
 Установка ruby на MacOS:
 ruby -v : Версия руби
 curl -L https://get.rvm.io | bash -s stable : Установка менеджера версия для ruby
@@ -5,10 +8,13 @@ rvm list known: Включение менеджера
 rvm install ruby-2.4.4 : Установка ruby
 rvm use ruby-2.4.4 --default : Установка данного интерпретатора дефолтным
 
+Установка yarn:
+brew install yarn
+
 Установки rails на MacOS:
 gem install rails
 
-
+По дефолту на маке стоит node.js и npm
 Краткий экскурс по ruby:
 
 Вывод:
