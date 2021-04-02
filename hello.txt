@@ -5,8 +5,8 @@ https://www.notion.so/keklol/fa71ecd08b1049eebbcb7d86cf3c4157?v=1a801d37125349f6
 ruby -v : Версия руби
 curl -L https://get.rvm.io | bash -s stable : Установка менеджера версия для ruby
 rvm list known: Включение менеджера
-rvm install ruby-2.4.4 : Установка ruby
-rvm use ruby-2.4.4 --default : Установка данного интерпретатора дефолтным
+rvm install ruby-2.5.2 : Установка ruby
+rvm use ruby-2.5.2 --default : Установка данного интерпретатора дефолтным
 
 Установка yarn:
 brew install yarn

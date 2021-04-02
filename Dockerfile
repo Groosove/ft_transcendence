@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-FROM ruby:2.6.3
+FROM ruby:2.5
 EXPOSE 3000
 
 RUN apt-get update && apt-get install -y yarn nodejs postgresql
@@ -28,7 +28,7 @@ RUN gem install rails
 COPY ./transcendence_app/Gemfile /Gemfile
 COPY ./transcendence_app/Gemfile.lock /Gemfile.lock
 
-RUN bundle update --bundler && bundle install
+RUN bundle update --bundler
 
 # Start server
 COPY start.sh .
