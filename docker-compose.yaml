@@ -6,6 +6,8 @@ services:
       - ./tmp/db:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: password
   web:
     build: .
     image: server

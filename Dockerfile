@@ -6,7 +6,7 @@
 #    By: flavon <flavon@student.21-school.ru>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/15 11:19:10 by flavon            #+#    #+#              #
-#    Updated: 2021/04/10 11:37:18 by flavon           ###   ########.fr        #
+#    Updated: 2021/04/10 12:16:03 by flavon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,6 @@ EXPOSE 3000
 RUN apt-get update && apt-get install -y yarn nodejs postgresql
 
 # Project directory
-COPY ./transcendence_app .
 WORKDIR /transcendence_app
 
 # Library install
@@ -30,7 +29,7 @@ COPY ./transcendence_app/Gemfile.lock Gemfile.lock
 RUN bundle install
 
 # Start server
-COPY start.sh .
+COPY ./start.sh .
 RUN chmod +x start.sh
 
 ENTRYPOINT ["/bin/bash", "start.sh"]

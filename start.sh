@@ -1,7 +1,6 @@
 #!/bin/bash
 
 set -e
-
 cd transcendence_app
 rm -rf tmp/pids/server.pid
 
