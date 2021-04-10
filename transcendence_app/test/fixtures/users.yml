@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_nickname: MyString
+  user_emal: MyString
+  user_pass: MyString
+  user_role: MyString
+  user_photo: MyString
+  user_rating: 1
+  intra_token: MyString
+  google_token: 1
+
+two:
+  user_nickname: MyString
+  user_emal: MyString
+  user_pass: MyString
+  user_role: MyString
+  user_photo: MyString
+  user_rating: 1
+  intra_token: MyString
+  google_token: 1
