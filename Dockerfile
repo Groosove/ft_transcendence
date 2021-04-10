@@ -2,11 +2,11 @@
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Dockerfile                                         :+:      :+:    :+:    #
-#    By: flavon                                       +:+ +:+         +:+      #
-#    By: welease        							+#+  +:+       +#+         #
-#    By: sjakku                                   +#+#+#+#+#+   +#+            #
-#    Created: 2021/03/15 12:10:28 by flavon            #+#    #+#              #
-#    Updated: 2021/03/15 12:12:12 by flavon           ###   ########.fr        #
+#                                                     +:+ +:+         +:+      #
+#    By: flavon <flavon@student.21-school.ru>       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/03/15 11:19:10 by flavon            #+#    #+#              #
+#    Updated: 2021/04/10 11:37:18 by flavon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,20 +16,17 @@ EXPOSE 3000
 RUN apt-get update && apt-get install -y yarn nodejs postgresql
 
 # Project directory
-RUN mkdir transcendence_app
-COPY . /transcendence_app
+COPY ./transcendence_app .
 WORKDIR /transcendence_app
 
 # Library install
-# RUN gem update --system
-# RUN gem install rails bundler:1.17.3
-# RUN gem install rails
+RUN gem update --system
+RUN gem install rails
 
 # Copy GemFile
-COPY ./transcendence_app/Gemfile /Gemfile
-COPY ./transcendence_app/Gemfile.lock /Gemfile.lock
+COPY ./transcendence_app/Gemfile Gemfile
+COPY ./transcendence_app/Gemfile.lock Gemfile.lock
 
-# RUN bundle update --bundler
 RUN bundle install
 
 # Start server
