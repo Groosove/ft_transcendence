@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Dockerfile                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: flavon <flavon@student.21-school.ru>       +#+  +:+       +#+         #
+#    By: sjakku <sjakku@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/15 11:19:10 by flavon            #+#    #+#              #
-#    Updated: 2021/04/10 12:16:03 by flavon           ###   ########.fr        #
+#    Updated: 2021/04/10 19:34:30 by sjakku           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,9 @@ FROM ruby:3.0.0
 EXPOSE 3000
 
 RUN apt-get update && apt-get install -y yarn nodejs postgresql
+
+COPY ./start.sh .
+RUN chmod +x start.sh
 
 # Project directory
 WORKDIR /transcendence_app
@@ -28,8 +31,4 @@ COPY ./transcendence_app/Gemfile.lock Gemfile.lock
 
 RUN bundle install
 
-# Start server
-COPY ./start.sh .
-RUN chmod +x start.sh
-
-ENTRYPOINT ["/bin/bash", "start.sh"]
+CMD sh start.sh
