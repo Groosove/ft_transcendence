@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_10_223733) do
+ActiveRecord::Schema.define(version: 2021_04_10_232354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,16 +27,27 @@ ActiveRecord::Schema.define(version: 2021_04_10_223733) do
   end
 
   create_table "guild_members", force: :cascade do |t|
+    t.integer "guild_id"
+    t.integer "guild_member_id"
+    t.string "guild_member_role"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "guilds", force: :cascade do |t|
+    t.string "guild_name"
+    t.string "guild_anagram"
+    t.integer "giuld_rating"
+    t.string "guild_avatar"
+    t.text "guild_description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "sessions", force: :cascade do |t|
+    t.integer "user_session_id"
+    t.string "user_key"
+    t.datetime "user_time_accepting"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -45,6 +56,11 @@ ActiveRecord::Schema.define(version: 2021_04_10_223733) do
     t.string "user_nickname"
     t.string "user_emal"
     t.string "user_pass"
+    t.string "user_role"
+    t.string "user_photo"
+    t.integer "user_rating"
+    t.string "intra_token"
+    t.integer "google_token"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
