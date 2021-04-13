@@ -1,2 +1,0 @@
-class Guild < ApplicationRecord
-end
