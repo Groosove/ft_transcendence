@@ -1,12 +1,19 @@
 #!/bin/bash
 
+# Set activity monitoring error
 set -e
-cd transcendence_app
+
+# Take needs directory
+cd /tabletennis
 rm -rf tmp/pids/server.pid
 
-bin/rails db:drop --trace
-bin/rails db:create --trace
-bin/rails db:migrate --trace
+# Drop old db
+./bin/rails db:drop
 
-# Start Server
-rails server -b 0.0.0.0
+# Create new db
+./bin/rails db:create
+
+# Migrate models tables to new db
+./bin/rails db:migrate
+
+./bin/rails server -b 0.0.0.0

@@ -1,41 +1,33 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Dockerfile                                         :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: flavon <flavon@student.21-school.ru>       +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/03/15 11:19:10 by flavon            #+#    #+#              #
-#    Updated: 2021/04/13 18:37:01 by flavon           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 FROM ruby:3.0.0
-EXPOSE 3000
 
-RUN apt-get update && apt-get install -y yarn nodejs postgresql
-
-COPY ./start.sh .
-RUN chmod +x start.sh
-
-#install yarn
+# Get yarb package
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-RUN apt update && apt install -y yarn
 
-# Project directory
-WORKDIR /transcendence_app
+#Update system
+RUN apt-get -y update && apt-get -y upgrade
 
-# Library install
+#Install packeges
+RUN apt-get install -y nodejs postgresql yarn
+
+#Move needs files
+COPY ./start.sh /
+RUN chmod +x start.sh
+
+# Set working directory
+WORKDIR /tabletennis
+COPY ./tabletennis /tabletennis
+
+RUN rm -rf ./tabletennis/tmp/pids/server.pid
+
+# install rails
 RUN gem update --system
 RUN gem install rails
 RUN gem install rails bundler
 
-# Copy GemFile
-COPY ./transcendence_app/Gemfile Gemfile
-COPY ./transcendence_app/Gemfile.lock Gemfile.lock
-
-RUN bundle install
+#Install all gems
 RUN yarn install
+RUN bundle install
 
-CMD sh start.sh
+CMD start.sh
+

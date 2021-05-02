@@ -1,0 +1,103 @@
+ul li {
+    display:inline-block;
+    margin-left: 15px;
+}
+
+header {
+
+    text-align: center;
+    background-color: rgb(111, 160, 65);
+    padding-bottom: 10px;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+}
+
+.start_page {
+    text-align: center;
+    padding-bottom: 25px;
+    margin-block-start: -1.5em;
+    padding-top: 300px;
+}
+
+.button_start_game {
+    text-align: center;
+    display: inline-block;
+    font-family: arial,sans-serif;
+    font-size: 15px;
+    color: #ffffff;
+    text-decoration: none;
+    user-select: none;
+    line-height: 2em;
+    padding: 1px 1.2em;
+    outline: none;
+    border: 1px solid #8CDB39;
+    border-radius: 3px;
+    background: #82ca35;
+}
+
+.button_start_game:hover {
+    border: 1px solid #76B7E9;
+    border-radius: 3px;
+    background: #76B7E9;
+}
+
+.main_pages {
+    min-width: 1000px;
+    padding-top: 15px;
+    /* border: 10px solid; */
+}
+
+.block_main_pages {
+    min-width: 498px;
+    min-height: 320px; 
+    display:inline-block;
+    align-content: left;
+}
+
+.block_main_pages_one {
+    color: white;
+    position: absolute;
+    margin-left: 250px;
+}
+
+.button_edit_profile {
+    margin-top: 10px;
+    text-align: center;
+    display: inline-block;
+    font-family: arial,sans-serif;
+    font-size: 11px;
+    color: #ffffff;
+    text-decoration: none;
+    user-select: none;
+    line-height: 2em;
+    padding: 1px 1.2em;
+    outline: none;
+    border: 1px solid #8CDB39;
+    border-radius: 3px;
+    background: #82ca35;
+}
+
+.button_edit_profile:hover {
+    border: 1px solid #76B7E9;
+    border-radius: 3px;
+    background: #76B7E9;
+}
+
+.friends {
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text_sign_up
+{
+    margin-top: 10px;
+    width: 240px;
+    height: 22px;
+    border-radius: 9px;
+    background-color: cadetblue;
+    border: 2px solid cadetblue;
+}
