@@ -15,6 +15,10 @@ class ConversationsController < ApplicationController
  		redirect_to conversation_messages_path(@conversation)
 	end
 
+	def update
+		@room = Conversation.find(params[:sender_id])
+		@room.update(conversation_params)
+	end
 	private def conversation_params
   		params.permit(:sender_id, :recipient_id)
  	end
