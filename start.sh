@@ -7,6 +7,8 @@ set -e
 cd /tabletennis
 rm -rf tmp/pids/server.pid
 
+bundle install
+
 # Drop old db
 ./bin/rails db:drop
 

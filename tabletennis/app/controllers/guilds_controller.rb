@@ -1,6 +1,7 @@
 class GuildsController < ApplicationController
+  # todo добавить защиту на make officer, remove officer, kick_member_from_guild
   before_action :authenticate_user!
-  before_action :set_guild, only: [:accept_to_guild, :check_user_role, :show, :edit]
+  before_action :set_guild, only: [:set_guild_member_officer, :accept_to_guild, :check_user_role, :show, :edit]
   before_action :check_guild_mem, only: [:new, :create, :accept_to_guild]
   before_action :check_user_role, only: [:edit]
 
@@ -48,6 +49,36 @@ class GuildsController < ApplicationController
     end
   end
 
+  def set_officer
+    p params
+    cur = User.find(params[:id])
+    unless cur.guild.check_member_role?(cur, cur.guild)
+      redirect_to guild_path(cur.guild), alert: "User cannot be an officer #{cur.nickname}"
+    else
+      cur.guild_member.update(user_role: 1)
+      redirect_to guild_path(cur.guild), notice: "Successfully set officer #{cur.nickname}"
+    end
+  end
+
+  def remove_from_officer
+    cur = User.find(params[:id])
+    unless cur.guild.check_member_officer?(cur, cur.guild)
+      redirect_to guild_path(cur.guild), alert: "User cannot be remove from officer #{cur.nickname}"
+    else
+      cur.guild_member.update(user_role: 0)
+      redirect_to guild_path(cur.guild), notice: "Successfully remove from officer #{cur.nickname}"
+    end
+  end
+
+  def kick_member_from_guild # todo сделать так, чтобы офицер не мог кикать сам себя
+    cur = User.find(params[:id])
+    unless cur.guild.user_owner?(cur, cur.guild)
+      cur.guild_member.destroy
+      redirect_to guild_path(cur.guild), notice: "Successfully remove member from guild #{cur.nickname}"
+    else
+      redirect_to guild_path(cur.guild), alert: "This is owner"
+    end
+  end
   private
 
   def check_user_role
